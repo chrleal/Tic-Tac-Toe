@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100vh;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board {
+    display: grid;
+    grid-template: repeat(3, 100px) / repeat(3, 100px);
+    align-items: center;
+    justify-items: center;
+    font-size: 50px;
+    border: 1px black solid;
+    background-color: black;
+    gap: 1px;
+}
+
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
