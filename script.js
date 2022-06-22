@@ -3,15 +3,45 @@ const newPlayer = (name, marker) => {
 }
 
 const gameBoard = (() => {
-    const board = ['X', 'X', 'X', 'X', 'O', 'O', 'O', 'O', 'O'];
+    const boardArray = ['', '', '', '', '', '', '', '', ''];
 
-    const contentboard = (() => {
-        const gameBoard = document.querySelector('.board');
-        const fields =gameBoard.querySelectorAll('.square');
+    const contentBoard = (() => {
+        const board = document.querySelector('.board');
+        const fields = board.querySelectorAll('.square');
         fields.forEach((field, index) => {
-            field.textContent = `${board[index]}`
+            field.textContent = `${boardArray[index]}`
         })
 
     })();
+    return {boardArray}
+
 })();
 
+const displayController = (() => {
+    const board = document.querySelector('.board');
+    const fields = board.querySelectorAll('.square');
+
+    const renderArray = (() => {
+        let mark = 'X';
+        fields.forEach((field) => {
+            field.addEventListener('click', () => {
+                gameBoard.boardArray.forEach((aux, index) => {
+                    if (index == field.dataset.id) {
+                        if (gameBoard.boardArray[index] != "") {
+                            return
+                        } else if (mark == 'X') {
+                            gameBoard.boardArray[index] = mark;
+                            field.textContent = mark;
+                            mark = 'O'
+                        } else {
+                            gameBoard.boardArray[index] = mark;
+                            field.textContent = mark;
+                            mark = 'X'
+                        }
+                    }
+                })
+            })
+        })
+    })();
+
+})();
