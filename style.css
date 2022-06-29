@@ -8,24 +8,28 @@ html{
 }
 
 body {
+    position: relative;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .board {
+    position: absolute;
     display: grid;
     grid-template: repeat(3, 100px) / repeat(3, 100px);
     align-items: center;
     justify-items: center;
     font-size: 50px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     background-color: black;
     gap: 1px;
+    height: auto;
 }
 
-.square {
+.cell {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,4 +37,9 @@ body {
     width: 100%;
     background-color: white;
     cursor: pointer;
+}
+
+.message {
+   position: relative;
+   top: 200px
 }
