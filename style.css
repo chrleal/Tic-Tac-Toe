@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -5,15 +8,22 @@
 
 html{
     height: 100vh;
+    background-color: #e9d7be;
 }
 
 body {
+    margin-top: auto;
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: 'Comic Neue', sans-serif;
+    background-image: url(IMAGES/background.png);
+    background-position: 48.5% 50%;
+    background-repeat: no-repeat;
+    color: #002672;
 }
 
 .board {
@@ -22,11 +32,9 @@ body {
     grid-template: repeat(3, 100px) / repeat(3, 100px);
     align-items: center;
     justify-items: center;
-    font-size: 50px;
-    /* border: 1px black solid; */
-    background-color: black;
-    gap: 1px;
-    height: auto;
+    font-size: 70px;
+    gap: 3px;
+    font-weight: 200;
 }
 
 .cell {
@@ -35,11 +43,64 @@ body {
     justify-content: center;
     height: 100%;
     width: 100%;
-    background-color: white;
     cursor: pointer;
+    border: 3px solid #002672;
+}
+
+div[data-id='2'], div[data-id='5'], div[data-id='8'] {
+    border-left: none;
+    border-right: none;
+}
+
+div[data-id='0'], div[data-id='3'], div[data-id='6'] {
+    border-left: none;
+    border-right: none;
+}
+
+div[data-id='0'], div[data-id='1'], div[data-id='2'] {
+    border-top: none;
+    border-bottom: none;
+}
+
+div[data-id='6'], div[data-id='7'], div[data-id='8'] {
+    border-top: none;
+    border-bottom: none;
 }
 
 .message {
    position: relative;
-   top: 200px
+   font-size: 30px;
+   font-weight: 400;
+   top: 237px
 }
+
+button {
+    position: relative;
+    top: 179px;
+    left: 120px;
+    font-family: 'Comic Neue', sans-serif;
+    border: none;
+    padding: 58px 68px;
+    background-color: transparent;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: rotate(-10deg);
+    background-image: url(IMAGES/eraser.png);
+}
+
+button:hover{
+    filter: brightness(126%);
+    -webkit-filter: brightness(126%);
+    -moz-filter: brightness(126%);
+}
+
+/* .title {
+    position: absolute;
+    top: 200px;
+    font-weight: 400;
+    font-size: 45px;
+    font-style: italic;
+} */

@@ -1,6 +1,3 @@
-const newPlayer = (name, marker) => {
-    return {name, marker};
-}
 const board = document.querySelector('.board');
 const cells = board.querySelectorAll('.cell');
 
@@ -27,24 +24,24 @@ const displayController = (() => {
             cell.addEventListener('click', () => {
                 gameBoard.boardArray.forEach((aux, index) => {
                     if (index == cell.dataset.id) {
-                        if (win == true) {
+                        if (win == true || cell.textContent != "") {
                             return
                         } else if (mark == 'X') {
                             gameBoard.boardArray[index] = mark;
                             cell.textContent = mark;
                             setResult();
                             mark = 'O'
+                            round++;
                         } else if (mark == 'O') {
                             gameBoard.boardArray[index] = mark;
                             cell.textContent = mark;
                             setResult();
                             mark = 'X'
+                            round++;
                         }
                     }
                 })
-                console.log(mark)
-                round++
-            }, {once: true})
+            })
         })
     })();
 
@@ -55,17 +52,31 @@ const displayController = (() => {
           const message = document.createElement('div');
           message.setAttribute('class', 'message');
           document.body.appendChild(message);
-          message.textContent = `${mark} Win!`
+          message.textContent = `"${mark}" Wins!`
+          const button = document.createElement('button');
+          document.body.appendChild(button);
+          button.addEventListener('click', eraseAll)
         } else if (round == 9){
           const message = document.createElement('div');
           message.setAttribute('class', 'message');
           document.body.appendChild(message);
-          message.textContent = `It's a Draw!`
-          console.log(`draw`);
+          message.textContent = `It's a Draw!`;
+          const button = document.createElement('button');
+          document.body.appendChild(button);
+          button.addEventListener('click', eraseAll);
         }
       }
 
-
+      function eraseAll() {
+            const button = document.querySelector('button');
+            const message = document.querySelector('.message');
+            button.remove();
+            message.remove();
+            gameBoard.boardArray = ['', '', '', '', '', '', '', '', ''];
+            cells.forEach(cell => cell.textContent = "");
+            win = false;
+            round = 1;
+      }
     return {mark}
 })();
 
@@ -89,6 +100,5 @@ const game = (() =>{
             })
         })
     }
-
     return {checkWinner}
 })();
